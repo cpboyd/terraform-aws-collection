@@ -9,7 +9,7 @@ moved {
 
 module "observe_cloudwatch_logs_subscription" {
   count   = local.enable_subscription ? 1 : 0
-  source  = "observeinc/cloudwatch-logs-subscription/aws"
+  source  = "registry.terraform.io/observeinc/cloudwatch-logs-subscription/aws"
   version = "0.5.0"
 
   name             = var.log_subscription_name
@@ -42,7 +42,7 @@ locals {
 module "lambda_log_subscription" {
   count = var.lambda_subscribe_logs ? 1 : 0
 
-  source  = "observeinc/kinesis-firehose/aws//modules/cloudwatch_logs_subscription"
+  source  = "registry.terraform.io/observeinc/kinesis-firehose/aws//modules/cloudwatch_logs_subscription"
   version = "2.1.0"
 
   kinesis_firehose = module.observe_kinesis_firehose
